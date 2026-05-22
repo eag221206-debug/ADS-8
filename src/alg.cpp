@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include <algorithm>
+#include <utility>
 #include "bst.h"
 
 void makeTree(BST<std::string>& tree, const char* filename) {
@@ -18,7 +19,7 @@ void makeTree(BST<std::string>& tree, const char* filename) {
 
     while (true) {
         int ch = file.get();
-        
+
         if (ch == EOF) {
             if (!current_word.empty()) {
                 tree.add(current_word);
@@ -42,8 +43,9 @@ void makeTree(BST<std::string>& tree, const char* filename) {
     file.close();
 }
 
-bool compareByFrequency(const std::pair<std::string, int>& a, const std::pair<std::string, int>& b) {
-    return a.second > b.second; 
+bool compareByFrequency(const std::pair<std::string, int>& a,
+                        const std::pair<std::string, int>& b) {
+    return a.second > b.second;
 }
 
 void printFreq(BST<std::string>& tree) {
